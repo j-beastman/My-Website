@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "personalwebsite"
+version = "0.1.0"
+description = ""
+authors = ["John <80288341+j-beastman@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.24.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
