@@ -115,13 +115,13 @@ with st.container():
                     'Boathouse Custodian',
                     'Head Sailing Instructor'))
     if option == 'Teaching Assitant in CS':
-        st.image("./app/static/Tufts_blue.png")
+        st.image("images/Tufts_blue.png")
         st.write("""
             - TA for CS40, "Machine Structure and Assembly Language Programming"
             - Teach low-level programming practices (in C)
                  """)
     elif option == 'Intern Engineer at DataRobot':
-        st.image("./app/static/Tufts_blue.png")
+        st.image("images/Tufts_blue.png")
         st.write("""
             - Placed 2nd in company-wide hackathon with "RFP Monster"
             - Performed pre/post sales work with the Data Science team
