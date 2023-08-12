@@ -2,12 +2,13 @@
 name = "personalwebsite"
 version = "0.1.0"
 description = ""
-authors = ["John <80288341+j-beastman@users.noreply.github.com>"]
+authors = ["John Eastman <john.eastman@datarobot.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-streamlit = "^1.24.1"
+streamlit = "^1.25.0"
+streamlit-lottie = "^0.0.5"
 
 
 [build-system]
