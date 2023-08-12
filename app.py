@@ -37,9 +37,9 @@ with st.container():
     with resume:
         st.markdown("[![resume](./app/static/resume.png)](http://google.com.au/)")
     with github:
-        st.markdown("[![github](./app/static/github.png)](http://google.com.au/)")
+        st.markdown("[![github](./app/static/github.png)](https://github.com/j-beastman)")
     with linkedin:
-        st.markdown("[![linkedin](./app/static/linkedin.png)](http://google.com.au/)")
+        st.markdown("[![linkedin](./app/static/linkedin.png)](https://www.linkedin.com/in/john-eastman-614174144/)")
     with photography:
         st.markdown("[![photography](./app/static/photography.png)](http://google.com.au/)")
 
@@ -107,22 +107,35 @@ with st.container():
 # ---- Experiences ----
 with st.container():
     st.write("---")
-    
     st.header("Experiences")
-    st.write("#####") # Inserts a space
-    st.write(
-        """
-        **MAKE MORE PURPOSE ORIENTED, why did I do x, what did it solve?**
-        - TA at Tufts University (Fall 2023):
+    option = st.selectbox(
+                'Select to see more information',
+                ('Teaching Assistant in CS', 
+                    'Intern Engineer at DataRobot', 
+                    'Boathouse Custodian',
+                    'Head Sailing Instructor'))
+    if option == 'Teaching Assitant in CS':
+        st.image("./static/Tufts_blue.png")
+        st.write("""
             - TA for CS40, "Machine Structure and Assembly Language Programming"
             - Teach low-level programming practices (in C)
-        - Intern Engineer at DataRobot (Summer 2023):
+                 """)
+    elif option == 'Intern Engineer at DataRobot':
+        st.image("./static/Tufts_blue.png")
+        st.write("""
             - Placed 2nd in company-wide hackathon with "RFP Monster"
             - Performed pre/post sales work with the Data Science team
             - Helped develop the datarobotx python sdk package 
             - Created 'accelerator' notebooks for the DataRobot community
             - Developed forecasts for Warner Brothers' "Barbie"
             - Called 'Eastman the Beastman' by the CCO
+                 """)
+        """
+        **MAKE MORE PURPOSE ORIENTED, why did I do x, what did it solve?**
+        - TA at Tufts University (Fall 2023):
+            
+        - Intern Engineer at DataRobot (Summer 2023):
+            
         - Boathouse Custodian @ Bacow Sailing Pavilion (2022-2023):
             - Head of maintenance and repair for Tufts' fleet of 27 sailboats and two motorboats
             - Perform professional-grade fiberglass repairs
@@ -131,7 +144,7 @@ with st.container():
             - Organized home events for the junior program
             - Personalized schedules & routines for competitive sailors in the program
         """
-    )
+    
 
 
 
