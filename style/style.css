@@ -32,9 +32,13 @@ button[type=submit]:hover {
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-/* Github image sizing */
+/* image sizing */
 img[alt=github] { width: 100px; }
 img[alt=linkedin] { width: 100px; }
 img[alt=me] { width: 250px; }
 img[alt=resume] { width: 100px; }
 img[alt=photography] { width: 100px; }
+img[alt=tufts] { width: 140px; }
+img[alt=datarobot] { width: 160px; }
+img[alt=tufts_sailing] { width: 100px; }
+img[alt=ayc] { width: 120px; }

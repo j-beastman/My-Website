@@ -81,10 +81,10 @@ with st.container():
             """
             TABot follows the same workflow as the RFP monster. It's really just a knowledge base
             for a computer science course's cirriculum. Why is it special?
-                - Piazza API (link)
-                - Chatting, working with different langchain features.
-                - Took everything I learned from RFP Monster and improved on it.
-                - Scheduled updates the RFP monster.
+            - Piazza API (link)
+            - Chatting, working with different langchain features.
+            - Took everything I learned from RFP Monster and improved on it.
+            - Scheduled updates the RFP monster.
             """
         )
 
@@ -96,7 +96,7 @@ with st.container():
         st.subheader("Skills")
         st.write(
             """
-            Languages: Python, C++, C,  \n
+            Languages: Python, C++, C  \n
             SDKs: Streamlit, Langchain, Deeplake, DataRobot, pandas, scikit-learn \n
             Development Tools: git, TDD, DDD, Excel, Adobe Illustrator & Photoshop
             """
@@ -112,16 +112,15 @@ with st.container():
                 'Select to see more information',
                     ('Teaching Assistant in CS', 
                     'Intern Engineer at DataRobot', 
-                    'Boathouse Custodian',
-                    'Head Sailing Instructor'))
-    if option == 'Teaching Assitant in CS':
-        st.image("images/Tufts_blue.png")
-        st.write("""
-            - TA for CS40, "Machine Structure and Assembly Language Programming"
+                    'Boathouse Custodian @ Bacow Sailing Pavilion',
+                    'Head Sailing Instructor @ American Yacht Club'))
+    if option == 'Teaching Assistant in CS':
+        st.markdown("![tufts](./app/static/Tufts_blue.png)")
+        st.write("""- TA for CS40, "Machine Structure and Assembly Language Programming"
             - Teach low-level programming practices (in C)
                  """)
     elif option == 'Intern Engineer at DataRobot':
-        st.image("images/Tufts_blue.png")
+        st.markdown("![datarobot](./app/static/datarobot.png)")
         st.write("""
             - Placed 2nd in company-wide hackathon with "RFP Monster"
             - Performed pre/post sales work with the Data Science team
@@ -130,23 +129,19 @@ with st.container():
             - Developed forecasts for Warner Brothers' "Barbie"
             - Called 'Eastman the Beastman' by the CCO
                  """)
-        """
-        **MAKE MORE PURPOSE ORIENTED, why did I do x, what did it solve?**
-        - TA at Tufts University (Fall 2023):
-            
-        - Intern Engineer at DataRobot (Summer 2023):
-            
-        - Boathouse Custodian @ Bacow Sailing Pavilion (2022-2023):
+    elif option == 'Boathouse Custodian @ Bacow Sailing Pavilion':
+        st.markdown("![tufts_sailing](./app/static/tuftssailing.png)")
+        st.write("""
             - Head of maintenance and repair for Tufts' fleet of 27 sailboats and two motorboats
             - Perform professional-grade fiberglass repairs
-        - Head Sailing Instructor @ American Yacht Club:
+                    """)
+    elif option == 'Head Sailing Instructor @ American Yacht Club':
+        st.markdown("![ayc](./app/static/ayc.png)")
+        st.write("""
             - Led a team of a dozen instructors to teach ~100 young sailors
             - Organized home events for the junior program
             - Personalized schedules & routines for competitive sailors in the program
-        """
-    
-
-
+        """)
 
 # ---- Education & Coursework ----
 with st.container():
