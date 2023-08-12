@@ -5,7 +5,7 @@ from PIL import Image
 import json
 
 
-st.set_page_config(page_title="John Eastman", page_icon="🦦")
+st.set_page_config(page_title="John Eastman", page_icon="🦦", layout="centered")
 
 
 def load_lottieurl(url):
@@ -29,65 +29,33 @@ local_css("style/style.css")
 
 # ---- LOAD ASSETS ----
 lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
-lottie_github = load_lottiefile("images/animation_ll78d7sr.json")
-# img_contact_form = Image.open("images/yt_contact_form.png")
-# img_lottie_animation = Image.open("images/yt_lottie_animation.png")
+# lottie_github = load_lottiefile("images/animation_ll78d7sr.json")
 
-# ---- HEADER SECTION ----
+# ---- Links ----
 with st.container():
-    left_column, right_column = st.columns(2)
-    with left_column:
-        # st.image("images/IMG_3964.JPG")
-        st.title("Hi, I'm John :wave:")
-        st.subheader("Thank you for checking out my page!")
-    with right_column:
-        image = 'images/github.png'
-        st.markdown(f"<a href='https://github.com/j-beastman' target='_blank'><img src={image} width='100'></a>", unsafe_allow_html=True)
-        
-# ---- Skills ----
-with st.container():
-    st.write("---")
-    left_column, right_column = st.columns(2)
-    with left_column:
-        st.subheader("Skills")
-        st.write(
-            """
-            Languages: Python, C++, C,  \n
-            SDKs: Streamlit, Langchain, Deeplake, DataRobot, pandas, scikit-learn
-            Development Tools: git, TDD, DDD, Excel, Adobe Illustrator & Photoshop
-            """
-        )
-    with right_column:
-        st_lottie(lottie_coding, height=100, key="coding")
+    resume, github, linkedin, photography = st.columns(4)
+    with resume:
+        st.markdown("[![resume](./app/static/resume.png)](http://google.com.au/)")
+    with github:
+        st.markdown("[![github](./app/static/github.png)](http://google.com.au/)")
+    with linkedin:
+        st.markdown("[![linkedin](./app/static/linkedin.png)](http://google.com.au/)")
+    with photography:
+        st.markdown("[![photography](./app/static/photography.png)](http://google.com.au/)")
 
-# ---- Experiences ----
+
+# ---- BIO SECTION ----
 with st.container():
     st.write("---")
-    
-    st.header("Experiences")
-    st.write("#####") # Inserts a space
-    st.write(
-        """
-        **MAKE MORE PURPOSE ORIENTED, why did I do x, what did it solve?
-        - TA at Tufts University (Fall 2023):
-            - TA for CS40, "Machine Structure and Assembly Language Programming"
-            - Teach low-level programming practices (in C)
-        - Intern Engineer at DataRobot (Summer 2023):
-            - Placed 2nd in company-wide hackathon with "RFP Monster"
-            - Performed pre/post sales work with the Data Science team
-            - Helped develop the datarobotx python sdk package 
-            - Created 'accelerator' notebooks for the DataRobot community
-            - Developed forecasts for Warner Brothers' "Barbie"
-        - Boathouse Custodian @ Bacow Sailing Pavilion (2022-2023):
-            - Head of maintenance and repair for Tufts' fleet of 27 sailboats and two motorboats
-            - Perform professional-grade fiberglass repairs
-        - Head Sailing Instructor @ American Yacht Club:
-            - Led a team of a dozen instructors to teach ~100 young sailors
-            - Organized home events for the junior program
-            - Personalized schedules & routines for competitive sailors in the program
-        """
-    )
-
+    picture,left_column = st.columns([1, 2], gap="small")
+    with picture:
+        st.markdown("[![me](./app/static/john.png)](http://google.com.au/)")
+    with left_column:
+        st.subheader("Hi, I'm John :wave:")
+        st.write("I'm happy you're here! Please explore my projects below; they are my pride and joy. "
+                 "Above you'll find the images link to my resume, Github, LinkedIn, and my photography website. "
+                 "If you want to copy this template and make your own resume website, find the project on my Github!")
+   
 # ---- PROJECTS ----
 with st.container():
     st.write("---")
@@ -111,37 +79,86 @@ with st.container():
         st.subheader("TABot")
         st.write(
             """
+            TABot follows the same workflow as the RFP monster. It's really just a knowledge base
+            for a computer science course's cirriculum. Why is it special?
+                - Piazza API (link)
+                - Chatting, working with different langchain features.
+                - Took everything I learned from RFP Monster and improved on it.
+                - Scheduled updates the RFP monster.
             """
         )
 
 # ---- Skills ----
 with st.container():
     st.write("---")
-    left_column, right_column = st.columns(2)
+    left_column, right_column = st.columns([2,1])
     with left_column:
-        st.header("Education & Coursework")
-        st.subheader("Candidate for Bachelor of Science in Computer Science")
-        st.write("Current GPA: 3.78/4.0 \n"
-                 "Expected Graduation: Fall 2024")
-        st.write("##")
+        st.subheader("Skills")
         st.write(
             """
-            - Computer Science:
-                - Artificial Intelligence
-                - Intro to ML
-                - Data Structures
-                - Machine Structure & Assembly Language
-                - Algorithms
-            - Mathematics:
-                - Probability
-                - Linear Algebra
-                - Discrete Mathematics
-            - Economics & Finance:
-                - Intro to Finance
+            Languages: Python, C++, C,  \n
+            SDKs: Streamlit, Langchain, Deeplake, DataRobot, pandas, scikit-learn \n
+            Development Tools: git, TDD, DDD, Excel, Adobe Illustrator & Photoshop
             """
         )
     with right_column:
-        st_lottie(lottie_coding, height=300, key="coding")
+        st_lottie(lottie_coding, height=150, key="coding")
+
+# ---- Experiences ----
+with st.container():
+    st.write("---")
+    
+    st.header("Experiences")
+    st.write("#####") # Inserts a space
+    st.write(
+        """
+        **MAKE MORE PURPOSE ORIENTED, why did I do x, what did it solve?**
+        - TA at Tufts University (Fall 2023):
+            - TA for CS40, "Machine Structure and Assembly Language Programming"
+            - Teach low-level programming practices (in C)
+        - Intern Engineer at DataRobot (Summer 2023):
+            - Placed 2nd in company-wide hackathon with "RFP Monster"
+            - Performed pre/post sales work with the Data Science team
+            - Helped develop the datarobotx python sdk package 
+            - Created 'accelerator' notebooks for the DataRobot community
+            - Developed forecasts for Warner Brothers' "Barbie"
+            - Called 'Eastman the Beastman' by the CCO
+        - Boathouse Custodian @ Bacow Sailing Pavilion (2022-2023):
+            - Head of maintenance and repair for Tufts' fleet of 27 sailboats and two motorboats
+            - Perform professional-grade fiberglass repairs
+        - Head Sailing Instructor @ American Yacht Club:
+            - Led a team of a dozen instructors to teach ~100 young sailors
+            - Organized home events for the junior program
+            - Personalized schedules & routines for competitive sailors in the program
+        """
+    )
+
+
+
+# ---- Education & Coursework ----
+with st.container():
+    st.write("---")
+    
+    st.header("Education & Coursework")
+    st.subheader("Candidate for Bachelor of Science in Computer Science")
+    st.write("Current GPA: 3.78/4.0 --- Expected Graduation: Fall 2024")
+    st.write(
+        """
+        - Computer Science:
+            - Artificial Intelligence
+            - Intro to ML
+            - Data Structures
+            - Machine Structure & Assembly Language
+            - Algorithms
+        - Mathematics:
+            - Probability
+            - Linear Algebra
+            - Discrete Mathematics
+        - Economics & Finance:
+            - Intro to Finance
+        """
+    )
+   
 
 # ---- CONTACT ----
 with st.container():

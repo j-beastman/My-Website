@@ -31,3 +31,10 @@ button[type=submit]:hover {
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
+
+/* Github image sizing */
+img[alt=github] { width: 100px; }
+img[alt=linkedin] { width: 100px; }
+img[alt=me] { width: 250px; }
+img[alt=resume] { width: 100px; }
+img[alt=photography] { width: 100px; }
