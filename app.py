@@ -41,7 +41,7 @@ with st.container():
     with linkedin:
         st.markdown("[![linkedin](./app/static/linkedin.png)](https://www.linkedin.com/in/john-eastman-614174144/)")
     with photography:
-        st.markdown("[![photography](./app/static/photography.png)](http://google.com.au/)")
+        st.markdown("[![photography](./app/static/photography.png)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
 
 
 # ---- BIO SECTION ----
@@ -49,7 +49,7 @@ with st.container():
     st.write("---")
     picture,left_column = st.columns([1, 2], gap="small")
     with picture:
-        st.markdown("[![me](./app/static/john.png)](http://google.com.au/)")
+        st.markdown("[![me](./app/static/john.png)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
     with left_column:
         st.subheader("Hi, I'm John :wave:")
         st.write("I'm happy you're here! Please explore my projects below; they are my pride and joy. "
@@ -108,20 +108,20 @@ with st.container():
 with st.container():
     st.write("---")
     st.header("Experiences")
-    option = st.selectbox(
+    option = st.radio(
                 'Select to see more information',
-                ('Teaching Assistant in CS', 
+                    ('Teaching Assistant in CS', 
                     'Intern Engineer at DataRobot', 
                     'Boathouse Custodian',
                     'Head Sailing Instructor'))
     if option == 'Teaching Assitant in CS':
-        st.image("./static/Tufts_blue.png")
+        st.image("./app/static/Tufts_blue.png")
         st.write("""
             - TA for CS40, "Machine Structure and Assembly Language Programming"
             - Teach low-level programming practices (in C)
                  """)
     elif option == 'Intern Engineer at DataRobot':
-        st.image("./static/Tufts_blue.png")
+        st.image("./app/static/Tufts_blue.png")
         st.write("""
             - Placed 2nd in company-wide hackathon with "RFP Monster"
             - Performed pre/post sales work with the Data Science team
