@@ -61,9 +61,9 @@ with st.container():
     st.write("---")
     st.header("My Projects")
     st.write("##")
-    image_column, text_column = st.columns((1, 2))
+    image_column, text_column = st.columns((2, 3))
     with image_column:
-        st.markdown("[![rfp_monster](./app/static/RFP_monster.png)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
+        st.markdown("[![rfp_monster](./app/static/rfp_monster.gif)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
     with text_column:
         st.subheader("RFP Monster")
         st.write(
