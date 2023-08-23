@@ -110,16 +110,11 @@ with st.container():
     st.header("Experiences")
     option = st.radio(
                 'Select to see more information',
-                    ('Teaching Assistant in CS', 
-                    'Intern Engineer at DataRobot', 
+                    ('Intern Engineer at DataRobot',
+                     'Teaching Assistant in CS', 
                     'Boathouse Custodian @ Bacow Sailing Pavilion',
                     'Head Sailing Instructor @ American Yacht Club'))
-    if option == 'Teaching Assistant in CS':
-        st.markdown("![tufts](./app/static/Tufts_blue.png)")
-        st.write("""- TA for CS40, "Machine Structure and Assembly Language Programming"
-            - Teach low-level programming practices (in C)
-                 """)
-    elif option == 'Intern Engineer at DataRobot':
+    if option == 'Intern Engineer at DataRobot':
         st.markdown("![datarobot](./app/static/datarobot.png)")
         st.write("""
             - Placed 2nd in company-wide hackathon with "RFP Monster"
@@ -128,6 +123,11 @@ with st.container():
             - Created 'accelerator' notebooks for the DataRobot community
             - Developed forecasts for Warner Brothers' "Barbie"
             - Called 'Eastman the Beastman' by the CCO
+                 """)
+    elif option == 'Teaching Assistant in CS':
+        st.markdown("![tufts](./app/static/Tufts_blue.png)")
+        st.write("""- TA for CS40, "Machine Structure and Assembly Language Programming"
+            - Teach low-level programming practices (in C)
                  """)
     elif option == 'Boathouse Custodian @ Bacow Sailing Pavilion':
         st.markdown("![tufts_sailing](./app/static/tuftssailing.png)")
