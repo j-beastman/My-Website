@@ -1,9 +1,8 @@
 import requests
 import streamlit as st
-from streamlit_lottie import st_lottie
-from PIL import Image
+# from streamlit_lottie import st_lottie
+# from PIL import Image
 import json
-
 
 st.set_page_config(page_title="John Eastman", page_icon="🦦", layout="centered")
 
@@ -28,20 +27,18 @@ def local_css(file_name):
 local_css("style/style.css")
 
 # ---- LOAD ASSETS ----
-lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
+# lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
 # lottie_github = load_lottiefile("images/animation_ll78d7sr.json")
+# pdf_file = "./app/pages/Eastman_Resume.pdf"
+# base64_pdf = base64.b64encode(pdf_file.read()).decode('utf-8')
+# pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">' 
 
 # ---- Links ----
-with st.container():
-    resume, github, linkedin, photography = st.columns(4)
-    with resume:
-        st.markdown("[![resume](./app/static/resume.png)](http://google.com.au/)")
-    with github:
-        st.markdown("[![github](./app/static/github.png)](https://github.com/j-beastman)")
-    with linkedin:
-        st.markdown("[![linkedin](./app/static/linkedin.png)](https://www.linkedin.com/in/john-eastman-614174144/)")
-    with photography:
-        st.markdown("[![photography](./app/static/photography.png)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
+with st.sidebar:
+    st.markdown("[![github](./app/static/githubb.png)](https://github.com/j-beastman)")
+    # st.markdown("[![linkedin](./app/static/linkedinn.png)](https://www.linkedin.com/in/john-eastman-614174144/)")
+    # with photography:
+        # st.markdown("[![photography](./app/static/photography.png)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
 
 
 # ---- BIO SECTION ----
@@ -49,10 +46,10 @@ with st.container():
     st.write("---")
     picture,left_column = st.columns([1, 2], gap="small")
     with picture:
-        st.markdown("[![me](./app/static/john.png)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
+        st.markdown("![me](./app/static/john.png)") #(https://www.eecs.tufts.edu/~jeastm01/photo.html)
     with left_column:
         st.subheader("Hi, I'm John :wave:")
-        st.write("I'm happy you're here! Please explore my projects below; they are my pride and joy. "
+        st.write("I'm happy you're here! Please explore my projects below. "
                  "Above you'll find the images link to my resume, Github, LinkedIn, and my photography website. "
                  "If you want to copy this template and make your own resume website, find the project on my Github!")
    
@@ -71,38 +68,39 @@ with st.container():
             The RFP Monster has a unique workflow. 
             """
         )
-with st.container():
-    image_column, text_column = st.columns((1, 2))
-    with image_column:
-        print("X")
-    with text_column:
-        st.subheader("TABot")
-        st.write(
-            """
-            TABot follows the same workflow as the RFP monster. It's really just a knowledge base
-            for a computer science course's cirriculum. Why is it special?
-            - Piazza API (link)
-            - Chatting, working with different langchain features.
-            - Took everything I learned from RFP Monster and improved on it.
-            - Scheduled updates the RFP monster.
-            """
-        )
+        
+# with st.container():
+#     image_column, text_column = st.columns((1, 2))
+#     with image_column:
+#         print("X")
+#     with text_column:
+#         st.subheader("TABot")
+#         st.write(
+#             """
+#             TABot follows the same workflow as the RFP monster. It's really just a knowledge base
+#             for a computer science course's cirriculum. Why is it special?
+#             - Piazza API (link)
+#             - Chatting, working with different langchain features.
+#             - Took everything I learned from RFP Monster and improved on it.
+#             - Scheduled updates the RFP monster.
+#             """
+#         )
 
 # ---- Skills ----
 with st.container():
     st.write("---")
-    left_column, right_column = st.columns([2,1])
-    with left_column:
-        st.subheader("Skills")
-        st.write(
+    # left_column, right_column = st.columns([2,1])
+    # with left_column:
+    st.subheader("Skills")
+    st.write(
             """
             Languages: Python, C++, C  \n
             SDKs: Streamlit, Langchain, Deeplake, DataRobot, pandas, scikit-learn \n
             Development Tools: git, TDD, DDD, Excel, Adobe Illustrator & Photoshop
             """
-        )
-    with right_column:
-        st_lottie(lottie_coding, height=150, key="coding")
+    )
+    # with right_column:
+    #     st_lottie(lottie_coding, height=150, key="coding")
 
 # ---- Experiences ----
 with st.container():
@@ -149,7 +147,7 @@ with st.container():
     
     st.header("Education & Coursework")
     st.subheader("Candidate for Bachelor of Science in Computer Science")
-    st.write("Current GPA: 3.78/4.0 --- Expected Graduation: Fall 2024")
+    st.write("Current GPA: 3.78/4.0 --- Expected Graduation: Spring 2025")
     st.write(
         """
         - Computer Science:
