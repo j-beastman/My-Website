@@ -52,7 +52,7 @@ with st.container():
         st.write("I'm happy you're here! Please explore my projects below. "
                  "Above you'll find the images link to my resume, Github, LinkedIn, and my photography website. "
                  "If you want to copy this template and make your own resume website, find the project on my Github!")
-   
+#https://www.eecs.tufts.edu/~jeastm01/photo.html
 # ---- PROJECTS ----
 with st.container():
     st.write("---")
@@ -60,7 +60,7 @@ with st.container():
     st.write("##")
     image_column, text_column = st.columns((2, 3))
     with image_column:
-        st.markdown("[![rfp_monster](./app/static/rfp_monster.gif)](https://www.eecs.tufts.edu/~jeastm01/photo.html)")
+        st.markdown("[![rfp_monster](./app/static/rfp_monster.gif)]")
     with text_column:
         st.subheader("RFP Monster")
         st.write(
