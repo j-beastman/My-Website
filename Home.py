@@ -60,7 +60,7 @@ with st.container():
     st.write("##")
     image_column, text_column = st.columns((2, 3))
     with image_column:
-        st.markdown("[![rfp_monster](./app/static/rfp_monster.gif)]")
+        st.markdown("![rfp_monster](./app/static/rfp_monster.gif)")
     with text_column:
         st.subheader("RFP Monster")
         st.write(
