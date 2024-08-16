@@ -51,24 +51,11 @@ with st.container():
         st.subheader("Hi, I'm John :wave:")
         st.write("I'm happy you're here! Please explore my projects below. "
                  "Above you'll find the images link to my resume, Github, LinkedIn, and my photography website. "
-                 "If you want to copy this template and make your own resume website, find the project on my Github!")
-#https://www.eecs.tufts.edu/~jeastm01/photo.html
-# ---- PROJECTS ----
-with st.container():
-    st.write("---")
-    st.header("My Projects")
-    st.write("##")
-    image_column, text_column = st.columns((2, 3))
-    with image_column:
-        st.markdown("![rfp_monster](./app/static/rfp_monster.gif)")
-    with text_column:
-        st.subheader("RFP Monster")
-        st.write(
-            """
-            The RFP Monster has a unique workflow. 
-            """
-        )
+                 "If you want to copy this template and make your own resume website, find the project on my Github!"
+                 "Please star it!")
         
+#https://www.eecs.tufts.edu/~jeastm01/photo.html
+
 # with st.container():
 #     image_column, text_column = st.columns((1, 2))
 #     with image_column:
@@ -94,9 +81,9 @@ with st.container():
     st.subheader("Skills")
     st.write(
             """
-            Languages: Python, C++, C  \n
-            SDKs: Streamlit, Langchain, Deeplake, DataRobot, pandas, scikit-learn \n
-            Development Tools: git, TDD, DDD, Excel, Adobe Illustrator & Photoshop
+            Languages: Fluent: Python, C++, C  Proficient: SQL, R \n
+            SDKs: kedro, streamlit, langchain, deeplake, DataRobot, pandas, scikit-learn \n
+            Development Tools: git, TDD, Excel, Adobe Illustrator & Photoshop
             """
     )
     # with right_column:
@@ -106,12 +93,17 @@ with st.container():
 with st.container():
     st.write("---")
     st.header("Experiences")
-    option = st.radio(
+    option = st.selectbox(
                 'Select to see more information',
-                    ('Intern Engineer at DataRobot',
-                     'Teaching Assistant in CS', 
-                    'Boathouse Custodian @ Bacow Sailing Pavilion',
-                    'Head Sailing Instructor @ American Yacht Club'))
+                (
+                'OCTO Intern, DataRobot',
+                'Business Intelligence Intern, Boston Celtics',
+                'Intern Engineer, DataRobot',
+                'Teaching Assistant in CS, Tufts University', 
+                'Boathouse Custodian, Bacow Sailing Pavilion',
+                'Head Sailing Instructor, American Yacht Club',
+                ),
+            )
     if option == 'Intern Engineer at DataRobot':
         st.markdown("![datarobot](./app/static/datarobot.png)")
         st.write("""
