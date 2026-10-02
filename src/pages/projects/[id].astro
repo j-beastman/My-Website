@@ -1,0 +1,34 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getProjects, url } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, tag, summary, link, cover, coverAlt } = project.data;
+---
+
+<Base title={title} description={summary} current="projects">
+  <article class="article">
+    <div class="article-inner">
+      <a class="ul back" href={url('projects/')}>← All projects</a>
+      <span class="card-tag">{tag}</span>
+      <h1>{title}</h1>
+      <p class="lede">{summary}</p>
+      {cover && <img class="cover" src={cover.src} width={cover.width} height={cover.height} alt={coverAlt ?? ''} />}
+      <div class="prose">
+        <Content />
+      </div>
+      {link && (
+        <div class="actions">
+          <a class="btn btn-line" href={link}>View the code</a>
+        </div>
+      )}
+    </div>
+  </article>
+</Base>

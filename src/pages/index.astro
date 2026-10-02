@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PostRow from '../components/PostRow.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import painting from '../assets/painting.jpg';
+import { site } from '../data/site';
+import { getPosts, getProjects, url } from '../lib/content';
+
+const posts = (await getPosts()).slice(0, 5);
+const projects = await getProjects();
+---
+
+<Base overlayHeader>
+  <section class="hero" id="top">
+    <Image
+      class="hero-img"
+      src={painting}
+      alt={site.hero.imageAlt}
+      widths={[800, 1400, 2000, 2800]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="hero-light"></div>
+    <div class="hero-shade"></div>
+
+    <div class="hero-copy">
+      <div class="hero-text">
+        <h1>{site.hero.headline} {site.hero.headlineItalic && <em>{site.hero.headlineItalic}</em>}</h1>
+        {site.hero.intro && <p>{site.hero.intro}</p>}
+        <div class="actions">
+          <a class="btn btn-reveal" href="#work" data-tab-link="blog">{site.hero.primaryButton}</a>
+          <a class="btn btn-reveal" href="#work" data-tab-link="projects">{site.hero.secondaryButton}</a>
+          <a class="btn btn-reveal" href={site.links.github}>GitHub</a>
+          <a class="btn btn-reveal" href={site.links.linkedin}>LinkedIn</a>
+        </div>
+      </div>
+      <a class="cue-wrap" href="#work">SCROLL <span class="cue"></span></a>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap section-inner">
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button class="tab" role="tab" id="tab-blog" aria-controls="panel-blog" aria-selected="true">
+          {site.sections.blog}
+        </button>
+        <button class="tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">
+          {site.sections.projects}
+        </button>
+      </div>
+
+      <div class="section-inner" role="tabpanel" id="panel-blog" aria-labelledby="tab-blog">
+        {
+          posts.length > 0 ? (
+            <div class="rows">
+              {posts.map((post) => (
+                <PostRow post={post} />
+              ))}
+            </div>
+          ) : (
+            <p class="empty">{site.sections.noPosts}</p>
+          )
+        }
+        <a class="ul more" href={url('blog/')}>{site.sections.allPosts} →</a>
+      </div>
+
+      <div class="section-inner" role="tabpanel" id="panel-projects" aria-labelledby="tab-projects" hidden>
+        <div class="cards">
+          {projects.map((project) => <ProjectCard project={project} />)}
+        </div>
+        <a class="ul more" href={url('projects/')}>{site.sections.allProjects} →</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Moonlight follows the pointer across the hero.
+  const hero = document.querySelector<HTMLElement>('.hero');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (hero && !reduceMotion) {
+    let frame = 0;
+    hero.addEventListener('pointermove', (e) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty('--x', String(((e.clientX - r.left) / r.width) * 100));
+        hero.style.setProperty('--y', String(((e.clientY - r.top) / r.height) * 100));
+      });
+    });
+  }
+
+  // Writing / Projects tabs.
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+  function select(tab: HTMLButtonElement) {
+    for (const t of tabs) {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+    }
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      select(next);
+      next.focus();
+    });
+  });
+  document.querySelectorAll<HTMLAnchorElement>('[data-tab-link]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const tab = document.getElementById(`tab-${link.dataset.tabLink}`) as HTMLButtonElement | null;
+      if (tab) select(tab);
+    });
+  });
+</script>

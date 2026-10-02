@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Stamp from './Stamp.astro';
+import { url } from '../lib/content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+
+<a class="row" href={url(`blog/${post.id}/`)}>
+  <Stamp date={post.data.date} />
+  <span class="row-text">
+    {post.data.draft && <span class="draft-label">DRAFT</span>}
+    <span class="row-title">{post.data.title}</span>
+    <span class="row-summary">{post.data.summary}</span>
+  </span>
+  <svg class="arr" width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="#F1DFC2" stroke-width="1.2" aria-hidden="true">
+    <path d="M2 8h11M9 4l4 4-4 4"></path>
+  </svg>
+</a>

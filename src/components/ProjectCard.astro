@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url } from '../lib/content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<a class="card" href={url(`projects/${project.id}/`)}>
+  <span class="card-tag">{project.data.draft ? 'Draft · ' : ''}{project.data.tag}</span>
+  <span class="card-title">{project.data.title}</span>
+  <span class="card-summary">{project.data.summary}</span>
+</a>

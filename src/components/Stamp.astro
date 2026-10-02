@@ -1,0 +1,17 @@
+---
+import { longDate, stampParts } from '../lib/content';
+
+interface Props {
+  date: Date;
+  size?: string;
+}
+
+const { date, size } = Astro.props;
+---
+
+<time class="stamp" datetime={date.toISOString()} style={size ? `font-size: ${size}` : undefined}>
+  <span class="stamp-digits" aria-hidden="true">
+    {stampParts(date).map((group) => <span>{[...group].map((c) => (c === '1' ? <span class="one">1</span> : c))}</span>)}
+  </span>
+  <span class="sr-only">{longDate(date)}</span>
+</time>

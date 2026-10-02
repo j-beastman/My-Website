@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { site } from '../../data/site';
+import { getProjects } from '../../lib/content';
+
+const projects = await getProjects();
+---
+
+<Base title={site.sections.projects} current="projects">
+  <section class="section" style="padding-top: 48px">
+    <div class="wrap section-inner">
+      <h1 class="page-title">{site.sections.projects}</h1>
+      <div class="cards">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</Base>
