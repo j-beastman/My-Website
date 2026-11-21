@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, tag, summary, link, cover, coverAlt } = project.data;
+const { title, tag, summary, link, linkLabel, cover, coverAlt } = project.data;
 ---
 
 <Base title={title} description={summary} current="projects">
@@ -26,7 +26,7 @@ const { title, tag, summary, link, cover, coverAlt } = project.data;
       </div>
       {link && (
         <div class="actions">
-          <a class="btn btn-line" href={link}>View the code</a>
+          <a class="btn btn-line" href={link}>{linkLabel}</a>
         </div>
       )}
     </div>

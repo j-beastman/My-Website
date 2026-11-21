@@ -1,13 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import PostRow from '../components/PostRow.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import painting from '../assets/painting.jpg';
 import { site } from '../data/site';
-import { getPosts, getProjects, url } from '../lib/content';
+import { getProjects, url } from '../lib/content';
 
-const posts = (await getPosts()).slice(0, 5);
 const projects = await getProjects();
 ---
 
@@ -30,48 +28,33 @@ const projects = await getProjects();
         <h1>{site.hero.headline} {site.hero.headlineItalic && <em>{site.hero.headlineItalic}</em>}</h1>
         {site.hero.intro && <p>{site.hero.intro}</p>}
         <div class="actions">
-          <a class="btn btn-reveal" href="#work" data-tab-link="blog">{site.hero.primaryButton}</a>
-          <a class="btn btn-reveal" href="#work" data-tab-link="projects">{site.hero.secondaryButton}</a>
+          <a class="btn btn-reveal" href="#work">{site.hero.primaryButton}</a>
+          <a class="btn btn-reveal" href={site.links.graveResearch}>{site.hero.secondaryButton}</a>
           <a class="btn btn-reveal" href={site.links.github}>GitHub</a>
           <a class="btn btn-reveal" href={site.links.linkedin}>LinkedIn</a>
         </div>
       </div>
-      <a class="cue-wrap" href="#work">SCROLL <span class="cue"></span></a>
+      <a class="cue-wrap" href="#about">SCROLL <span class="cue"></span></a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap section-inner about">
+      <h2 class="page-title">{site.about.heading}</h2>
+      <div class="prose">
+        {site.about.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+      <a class="btn btn-line" href={url(site.about.resumeFile)}>{site.about.resumeButton}</a>
     </div>
   </section>
 
   <section class="section" id="work">
     <div class="wrap section-inner">
-      <div class="tabs" role="tablist" aria-label="Sections">
-        <button class="tab" role="tab" id="tab-blog" aria-controls="panel-blog" aria-selected="true">
-          {site.sections.blog}
-        </button>
-        <button class="tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">
-          {site.sections.projects}
-        </button>
+      <h2 class="page-title">{site.sections.projects}</h2>
+      <div class="cards">
+        {projects.map((project) => <ProjectCard project={project} />)}
       </div>
-
-      <div class="section-inner" role="tabpanel" id="panel-blog" aria-labelledby="tab-blog">
-        {
-          posts.length > 0 ? (
-            <div class="rows">
-              {posts.map((post) => (
-                <PostRow post={post} />
-              ))}
-            </div>
-          ) : (
-            <p class="empty">{site.sections.noPosts}</p>
-          )
-        }
-        <a class="ul more" href={url('blog/')}>{site.sections.allPosts} →</a>
-      </div>
-
-      <div class="section-inner" role="tabpanel" id="panel-projects" aria-labelledby="tab-projects" hidden>
-        <div class="cards">
-          {projects.map((project) => <ProjectCard project={project} />)}
-        </div>
-        <a class="ul more" href={url('projects/')}>{site.sections.allProjects} →</a>
-      </div>
+      <a class="ul more" href={url('projects/')}>{site.sections.allProjects} →</a>
     </div>
   </section>
 </Base>
@@ -92,29 +75,4 @@ const projects = await getProjects();
     });
   }
 
-  // Writing / Projects tabs.
-  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
-  function select(tab: HTMLButtonElement) {
-    for (const t of tabs) {
-      const on = t === tab;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
-    }
-  }
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => select(tab));
-    tab.addEventListener('keydown', (e) => {
-      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-      const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
-      select(next);
-      next.focus();
-    });
-  });
-  document.querySelectorAll<HTMLAnchorElement>('[data-tab-link]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const tab = document.getElementById(`tab-${link.dataset.tabLink}`) as HTMLButtonElement | null;
-      if (tab) select(tab);
-    });
-  });
 </script>

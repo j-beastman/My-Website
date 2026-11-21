@@ -7,7 +7,7 @@ interface Props {
   title?: string;
   description?: string;
   overlayHeader?: boolean;
-  current?: 'blog' | 'projects';
+  current?: 'projects';
 }
 
 const { title, description = site.description, overlayHeader = false, current } = Astro.props;
@@ -41,7 +41,8 @@ const pageTitle = title ? `${title} · ${site.name}` : site.name;
     <header class:list={['site-header', { overlay: overlayHeader }]}>
       <a class="brand" href={url()}>{site.name}</a>
       <nav class="site-nav" aria-label="Main">
-        <a class="ul" href={url('blog/')} aria-current={current === 'blog' ? 'page' : undefined}>Blog</a>
+        <a class="ul" href={url('#about')}>About</a>
+        <a class="ul" href={site.links.graveResearch}>Grave Research</a>
         <a class="ul" href={url('projects/')} aria-current={current === 'projects' ? 'page' : undefined}>Projects</a>
         <a class="ul" href="#contact">Contact</a>
       </nav>

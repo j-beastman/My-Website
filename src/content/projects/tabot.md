@@ -1,14 +1,10 @@
 ---
 title: TABot
 tag: LangChain · Piazza API
-summary: A knowledge base for a CS course's curriculum, built on what I learned from RFP Monster.
+summary: A RAG assistant for a CS course, built on years of questions from the class's Piazza forum.
 order: 3
 ---
 
-TABot follows the same workflow as RFP Monster: it's a knowledge base for a computer science course's curriculum.
+Simple RAG yet again (noticing a theme with GenAI?). Our course ran its Q&A on Piazza, so I found its API and built on top of it. I ingested thousands of questions from past semesters into a vector database, then built a pipeline that uploads new questions as they're posted.
 
-- Pulls course discussion through the Piazza API
-- Chat built with LangChain
-- Scheduled updates keep it current
-
-[Write more here.]
+It helped streamline Q&A, especially when students were working late, as CS students tend to do!

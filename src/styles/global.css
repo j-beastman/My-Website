@@ -478,6 +478,17 @@ a:hover {
   color: var(--amber);
 }
 
+/* About */
+.about .prose {
+  max-width: 68ch;
+}
+.about .prose p {
+  margin: 0 0 1em;
+}
+.about .btn {
+  align-self: flex-start;
+}
+
 /* Project cards */
 .cards {
   display: grid;
